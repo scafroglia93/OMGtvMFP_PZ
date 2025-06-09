@@ -2,8 +2,7 @@
 
 Questo repository contiene script Python per generare automaticamente liste M3U di canali televisivi italiani, con un focus sugli eventi sportivi e la possibilità di utilizzare un proxy per una maggiore stabilità dei flussi.
 
-Si possono utilizzare due proxy, proxydd,tvproxy e mediaflow proxy
-per OMG consiglio Mediaflow, a breve uscirà una versione che consentirà di far partire anche i flussi HAT (H) e (Hd) e Thisnot (TN)
+Si può utilizzare solamente il proxy MFP ultima versione con supporto a MPD
 
 **Link ai proxy**
 https://github.com/ciccioxm3/proxydd 
@@ -27,16 +26,12 @@ Una volta configurati ed eseguiti gli script e i workflow GitHub Actions, avrai 
 
 
       
-*   🇮🇹 **Canali Italiani Generali da DaddyLive con Hattrick e Skystreaming:**
+*   🇮🇹 **Canali Italiani Generali da DaddyLive con Hattrick e Skystreaming etcetc:**
     *   `247ita.m3u8`
 *   🇮🇹 **Canali Italiani Filtrati da Vavoo:**
     *   `channels_italy.m3u8`
 *   ⚽ **Eventi Sportivi Maggiori (Misto ITA/Internazionale):**
     *   `itaevents.m3u8`
-*   🏆 **Eventi Sportivi Maggiori (Solo Flussi Italiani):**
-    *   `fullita.m3u8`
-*   🌍 **TUTTI gli Eventi Sportivi (Molto Estesa):**
-    *   `onlyevents.m3u8`
 ---
 
 ## 🛠️ Configurazione Iniziale degli Script
@@ -64,50 +59,19 @@ Dopo aver modificato e committato gli script sul tuo repository GitHub:
 
    
 ### Esecuzione dei Workflow (solo la prima volta, poi va in automatico)
-### RINOMINA FILEmpd.m3u8 in mpd.m3u8 
+
 Torna alla sezione Actions . 
 
 Esegui i workflow nel seguente ordine:
 
-1. 🚀 1 Update 24 7 :
+1. 🚀 unified.yml :
    - Clicca sul nome del workflow.
    - Sulla destra, clicca su "Run workflow".
    - Conferma cliccando sul pulsante verde "Run workflow".
-2. 🚀 2 Update hat :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-3. 🚀 3 Update skystreaming :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-4. 🚀 3.5 Update thisnot :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-5. 🚀 4 Update SportZone Scraper :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-3. 🚀 5 Update SportStreaming Scraper :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-6. 🚀 6 Update top1 Scraper :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
-7. 🚀 7 Update itaEvents :
-   - Clicca sul nome del workflow.
-   - Sulla destra, clicca su "Run workflow".
-   - Conferma cliccando sul pulsante verde "Run workflow".
+
 8. ⏳ ATTENDI IL COMPLETAMENTO del workflow precedente (deve apparire una spunta verde ✅).
 
      
-9. (Opzionale) 🌍1 Update OnlyEvents :
-   - Se desideri la lista con TUTTI gli eventi sportivi (molto estesa e potenzialmente con sport di nicchia), esegui anche questo workflow dopo il completamento degli altri.
-Attendi che tutti i workflow selezionati abbiano una spunta verde ✅. Questo indica che le liste M3U sono state generate e aggiornate nel tuo repository.
-
 Per i giorni a seguire non serve fare nulla, partono in automatico, mettere l'aggiornamento delle playlist su OMG ogni ora
 
 
