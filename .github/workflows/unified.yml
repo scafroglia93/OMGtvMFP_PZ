@@ -139,7 +139,7 @@ jobs:
       - name: "STEP 8: Run daddy ita e fullita"
         run: |
           python itaevents.py
-          python fullita.py
+# python fullita.py
 
       - name: "STEP 8: Run mergelists"
         run: |
