@@ -7,7 +7,6 @@ Si può utilizzare solamente il proxy MFP ultima versione con supporto a MPD
 https://github.com/mhdzumair/mediaflow-proxy
 
 
-per far girare anche i link HAT andarà installata una versione diversa di Mediaflow, quando sarà disponibile aggiornerò il readme
 
 ## ✨ Liste M3U Disponibili
 
