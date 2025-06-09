@@ -26,7 +26,7 @@ def update_proxy_links(input_m3u8_filepath, output_m3u8_filepath, env_filepath):
     
     lines_to_write = []
     updated_count = 0
-    m3u8_path = Path(m3u8_filepath)
+    m3u8_path = Path(input_m3u8_filepath)
 
     try:
         with open(m3u8_path, 'r', encoding='utf-8') as f:
