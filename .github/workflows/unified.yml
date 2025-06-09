@@ -66,7 +66,7 @@ jobs:
       - name: "STEP 1: Run 247VVDD scripts"
         run: |
           python vavoo.py
-          python 247ita.py
+        #python 247ita.py
           echo "=== STEP 1: 247VVDD completed ==="
 
       # STEP 2: Update Hat
