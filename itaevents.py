@@ -12,13 +12,14 @@ import time
 import re
 from urllib.parse import quote_plus  # Add this import
 import urllib.parse
+import base64
 import io
 from PIL import Image, ImageDraw, ImageFont
 from dotenv import load_dotenv
 import concurrent.futures
 load_dotenv()
 
-PROXYMFP = os.getenv("HLSPROXYMFP", "")
+PZPROXY = os.getenv("PZPROXY")
 GUARCAL = os.getenv("GUARCAL")
 DADDY = os.getenv("DADDY")
 SKYSTR = os.getenv("SKYSTR")
@@ -32,7 +33,7 @@ SKYSTR = os.getenv("SKYSTR")
 NUM_CHANNELS = 10000
 DADDY_LIVE_CHANNELS_URL = 'https://daddylive.dad/24-7-channels.php' # From 247m3u.py
 DADDY_JSON_FILE = "daddyliveSchedule.json"
-M3U8_OUTPUT_FILE = "itaevents.m3u8"
+M3U8_OUTPUT_FILE = "itapigz.m3u8"
 LOGO = "https://raw.githubusercontent.com/cribbiox/eventi/refs/heads/main/ddsport.png"
 
 # Base URLs for the standard stream checking mechanism (from lista.py)
@@ -700,11 +701,12 @@ def fetch_stream_details_worker(task_args):
     tvg_id_val, tvg_name, event_logo, italian_sport_key, \
     channel_name_str_for_extinf = task_args
 
-    stream_url_dynamic = get_stream_link(channelID, event_details, channel_name_str_for_get_link)
+    stream_url_dynamic_with_headers = get_stream_link(channelID, event_details, channel_name_str_for_get_link)
 
-    if stream_url_dynamic:
-        # Return channelID along with other necessary data
-        return (channelID, stream_url_dynamic, tvg_id_val, tvg_name, event_logo,
+    if stream_url_dynamic_with_headers:
+        # Estrai l'URL grezzo prima degli header aggiunti (se presenti)
+        raw_stream_url_part = stream_url_dynamic_with_headers.split("&h_user-agent=")[0]
+        return (channelID, raw_stream_url_part, tvg_id_val, tvg_name, event_logo,
                 italian_sport_key, channel_name_str_for_extinf)
     return None
 
@@ -788,11 +790,6 @@ def prepare_247_channel_tasks(parsed_247_channels_list):
     return tasks
 
 def generate_m3u_playlist():
-    # Fetch and parse index pages ONCE before starting any stream discovery
-    fetch_all_index_pages()
-
-    unique_ids_for_precaching = {} # Using dict to store ID -> channel_name (first one encountered for tennis logic)
-    print("Collecting unique channel IDs for pre-caching (Events)...")
     dadjson = loadJSON(DADDY_JSON_FILE)
     for day, day_data in dadjson.items():
         try:
@@ -821,6 +818,11 @@ def generate_m3u_playlist():
             print(f"KeyError/TypeError during ID collection for pre-caching: {e}")
             pass
 
+    # Fetch and parse index pages ONCE before starting any stream discovery
+    fetch_all_index_pages()
+
+    unique_ids_for_precaching = {} # Using dict to store ID -> channel_name (first one encountered for tennis logic)
+    print("Collecting unique channel IDs for pre-caching (Events)...")
     print("Collecting unique channel IDs for pre-caching (24/7 Channels)...")
     parsed_247_channels_data = fetch_and_parse_247_channels()
     for ch_info in parsed_247_channels_data:
@@ -847,16 +849,6 @@ def generate_m3u_playlist():
     # Counters
     total_events_in_json = 0
     skipped_events_by_category_filter = 0
-    processed_event_channels_count = 0
-    excluded_event_channels_by_keyword = 0
-    tasks_for_workers = []
-
-    # Define categories to exclude
-    excluded_categories = [
-        "TV Shows", "Cricket", "Aussie rules", "Snooker", "Baseball",
-        "Biathlon", "Cross Country", "Horse Racing", "Ice Hockey",
-        "Waterpolo", "Golf", "Darts", "Badminton", "Handball"
-    ]
 
     # First pass to gather category statistics
     category_stats = {} # For events
@@ -880,6 +872,42 @@ def generate_m3u_playlist():
     # Generate unique IDs for channels (if needed for fallback, though IDs from JSON/HTML are primary)
     # unique_ids_fallback = generate_unique_ids(NUM_CHANNELS) # This seems unused if IDs are from source
 
+    # 4. Process and write 24/7 channels FIRST
+    print("\nProcessing 24/7 Channels...")
+    tasks_247 = prepare_247_channel_tasks(parsed_247_channels_data) # No longer pass event_channel_ids_processed_and_written
+
+    processed_247_channels_count = 0
+    MAX_WORKERS = 10 # Define MAX_WORKERS here or make it a global constant
+    if tasks_247:
+        print(f"Fetching stream details for {len(tasks_247)} 24/7 channels...")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            results_247 = list(executor.map(fetch_stream_details_worker, tasks_247))
+
+        with open(M3U8_OUTPUT_FILE, 'a', encoding='utf-8') as file: # Append 24/7 channels
+            for result_item in results_247:
+                if result_item:
+                    # Il secondo elemento è l'URL grezzo dello stream
+                    _, raw_stream_url_247, tvg_id_val, tvg_name, event_logo, \
+                    group_title_val, channel_name_str_for_extinf_247 = result_item
+
+                    # Codifica in Base64 l'URL grezzo
+                    encoded_url_bytes_247 = base64.b64encode(raw_stream_url_247.encode('utf-8'))
+                    encoded_url_string_247 = encoded_url_bytes_247.decode('utf-8')
+                    new_final_url_247 = f"http://{PZPROXY}/watch/{encoded_url_string_247}.m3u8"
+
+                    file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{group_title_val}",{channel_name_str_for_extinf_247}\n')
+                    file.write(f"{new_final_url_247}\n\n")
+                    processed_247_channels_count += 1
+        print(f"Finished processing 24/7 channels. Added {processed_247_channels_count} 24/7 channels.")
+    else:
+        print("No 24/7 channel tasks to process.")
+
+    # Define categories to exclude for events
+    excluded_categories = [
+        "TV Shows", "Cricket", "Aussie rules", "Snooker", "Baseball",
+        "Biathlon", "Cross Country", "Horse Racing", "Ice Hockey",
+        "Waterpolo", "Golf", "Darts", "Badminton", "Handball"
+    ]
     print("\nProcessing Event Channels from JSON...")
     for day, day_data in dadjson.items():
         try:
@@ -1140,6 +1168,9 @@ def generate_m3u_playlist():
         except KeyError as e:
             print(f"KeyError: {e} - Key may not exist in JSON structure")
 
+    processed_event_channels_count = 0
+    excluded_event_channels_by_keyword = 0
+    tasks_for_workers = [] # Initialize tasks_for_workers for events
     # Process tasks in parallel and write to M3U8 file
     # Determina un numero di worker appropriato, es. 10 o 20 per I/O bound tasks
     # Puoi sperimentare con questo valore.
@@ -1153,41 +1184,23 @@ def generate_m3u_playlist():
         with open(M3U8_OUTPUT_FILE, 'a', encoding='utf-8') as file: # Append event channels
             for result_item in event_results:
                 if result_item:
-                    original_channel_id, stream_url_dynamic, tvg_id_val, tvg_name, event_logo, \
+                    original_channel_id, raw_stream_url, tvg_id_val, tvg_name, event_logo, \
                     italian_sport_key, channel_name_str_for_extinf = result_item
 
                     event_channel_ids_processed_and_written.add(original_channel_id) # Populate the set
+                    
+                    # Codifica in Base64 l'URL grezzo
+                    encoded_url_bytes = base64.b64encode(raw_stream_url.encode('utf-8'))
+                    encoded_url_string = encoded_url_bytes.decode('utf-8')
+                    new_final_url = f"http://pizzapi.uk:7860/watch/{encoded_url_string}.m3u8"
+                    
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{italian_sport_key}",{channel_name_str_for_extinf}\n')
-                    file.write(f"{PROXYMFP}{stream_url_dynamic}\n\n")
+                    file.write(f"{new_final_url}\n\n")
                     processed_event_channels_count += 1
         print(f"Finished processing event channels. Added {processed_event_channels_count} event channels.")
     else:
         event_channel_ids_processed_and_written = set() # Initialize empty if no event tasks
         print("No event channel tasks to process.")
-
-    # 4. Process and write 24/7 channels
-    print("\nProcessing 24/7 Channels...")
-    tasks_247 = prepare_247_channel_tasks(parsed_247_channels_data) # Removed event_channel_ids_processed_and_written argument
-
-    processed_247_channels_count = 0
-    if tasks_247:
-        print(f"Fetching stream details for {len(tasks_247)} 24/7 channels...")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            results_247 = list(executor.map(fetch_stream_details_worker, tasks_247))
-
-        with open(M3U8_OUTPUT_FILE, 'a', encoding='utf-8') as file: # Append 24/7 channels
-            for result_item in results_247:
-                if result_item:
-                    # original_channel_id_247 is the first element returned by fetch_stream_details_worker
-                    _, stream_url_dynamic, tvg_id_val, tvg_name, event_logo, \
-                    group_title_val, channel_name_str_for_extinf_247 = result_item
-
-                    file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{group_title_val}",{channel_name_str_for_extinf_247}\n')
-                    file.write(f"{PROXYMFP}{stream_url_dynamic}\n\n")
-                    processed_247_channels_count += 1
-        print(f"Finished processing 24/7 channels. Added {processed_247_channels_count} 24/7 channels.")
-    else:
-        print("No 24/7 channel tasks to process.")
 
 
     print(f"\n=== Processing Summary ===")
