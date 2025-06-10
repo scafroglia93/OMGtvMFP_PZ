@@ -12,7 +12,6 @@ import time
 import re
 from urllib.parse import quote_plus  # Add this import
 import urllib.parse
-import base64
 import io
 from PIL import Image, ImageDraw, ImageFont
 from dotenv import load_dotenv
@@ -890,10 +889,9 @@ def generate_m3u_playlist():
                     _, raw_stream_url_247, tvg_id_val, tvg_name, event_logo, \
                     group_title_val, channel_name_str_for_extinf_247 = result_item
 
-                    # Codifica in Base64 l'URL grezzo
-                    encoded_url_bytes_247 = base64.b64encode(raw_stream_url_247.encode('utf-8'))
-                    encoded_url_string_247 = encoded_url_bytes_247.decode('utf-8')
-                    new_final_url_247 = f"http://{PZPROXY}/watch/{encoded_url_string_247}.m3u8"
+                    # URL-encode il raw_stream_url_247 per l'uso sicuro in un parametro query
+                    safe_raw_url_247 = urllib.parse.quote_plus(raw_stream_url_247)
+                    new_final_url_247 = f"{PZPROXY}/porxy?url={safe_raw_url_247}"
 
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{group_title_val}",{channel_name_str_for_extinf_247}\n')
                     file.write(f"{new_final_url_247}\n\n")
@@ -1189,11 +1187,10 @@ def generate_m3u_playlist():
 
                     event_channel_ids_processed_and_written.add(original_channel_id) # Populate the set
                     
-                    # Codifica in Base64 l'URL grezzo
-                    encoded_url_bytes = base64.b64encode(raw_stream_url.encode('utf-8'))
-                    encoded_url_string = encoded_url_bytes.decode('utf-8')
-                    new_final_url = f"{PZPROXY}/watch/{encoded_url_string}.m3u8"
-                    
+                    # URL-encode il raw_stream_url per l'uso sicuro in un parametro query
+                    safe_raw_url = urllib.parse.quote_plus(raw_stream_url)
+                    new_final_url = f"{PZPROXY}/porxy?url={safe_raw_url}"
+                                        
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{italian_sport_key}",{channel_name_str_for_extinf}\n')
                     file.write(f"{new_final_url}\n\n")
                     processed_event_channels_count += 1
