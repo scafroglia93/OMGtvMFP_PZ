@@ -851,6 +851,13 @@ def generate_m3u_playlist():
     total_events_in_json = 0
     skipped_events_by_category_filter = 0
 
+    # Define categories to exclude for events
+    excluded_categories = [
+        "TV Shows", "Cricket", "Aussie rules", "Snooker", "Baseball",
+        "Biathlon", "Cross Country", "Horse Racing", "Ice Hockey",
+        "Waterpolo", "Golf", "Darts", "Badminton", "Handball", "Squash"
+    ]
+
     # First pass to gather category statistics
     category_stats = {} # For events
     for day, day_data in dadjson.items():
@@ -902,12 +909,6 @@ def generate_m3u_playlist():
     else:
         print("No 24/7 channel tasks to process.")
 
-    # Define categories to exclude for events
-    excluded_categories = [
-        "TV Shows", "Cricket", "Aussie rules", "Snooker", "Baseball",
-        "Biathlon", "Cross Country", "Horse Racing", "Ice Hockey",
-        "Waterpolo", "Golf", "Darts", "Badminton", "Handball"
-    ]
     print("\nProcessing Event Channels from JSON...")
     for day, day_data in dadjson.items():
         try:
