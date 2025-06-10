@@ -2,11 +2,25 @@
 
 Questo repository contiene script Python per generare automaticamente liste M3U di canali televisivi italiani, con un focus sugli eventi sportivi e la possibilità di utilizzare un proxy per una maggiore stabilità dei flussi.
 
-Si può utilizzare solamente il proxy MFP ultima versione con supporto a MPD
+Si può utilizzare il proxy MFP ultima versione con supporto a MPD
 
 https://github.com/mhdzumair/mediaflow-proxy
 
+E il proxy di Pigzilla 
+https://github.com/pigzillaaaaa/daddylive
+Per installare il Proxy di pigzilla
 
+`Sign up to https://huggingface.co/.
+In the top‑right corner, click the ➕ icon → New Space.
+Name: enter dproxy (or any name you prefer).
+SDK: choose Docker
+Visibility: select Public
+Click Create Space.
+In the Files section, upload the Dockerfile commit then wait for it to build, start and run.
+Click Embed this Space. It will show you the url of the space. Visit that url. If you see a ":)" then you are good to go.`
+
+Dockerfile
+https://github.com/pigzillaaaaa/daddylive/raw/refs/heads/main/Dockerfile
 
 ## ✨ Liste M3U Disponibili
 
