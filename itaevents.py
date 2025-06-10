@@ -789,6 +789,8 @@ def prepare_247_channel_tasks(parsed_247_channels_list):
     return tasks
 
 def generate_m3u_playlist():
+    # Inizializza unique_ids_for_precaching qui, prima del suo primo utilizzo.
+    unique_ids_for_precaching = {}
     dadjson = loadJSON(DADDY_JSON_FILE)
     for day, day_data in dadjson.items():
         try:
@@ -820,7 +822,7 @@ def generate_m3u_playlist():
     # Fetch and parse index pages ONCE before starting any stream discovery
     fetch_all_index_pages()
 
-    unique_ids_for_precaching = {} # Using dict to store ID -> channel_name (first one encountered for tennis logic)
+    # unique_ids_for_precaching era inizializzata qui, spostata sopra.
     print("Collecting unique channel IDs for pre-caching (Events)...")
     print("Collecting unique channel IDs for pre-caching (24/7 Channels)...")
     parsed_247_channels_data = fetch_and_parse_247_channels()
@@ -1190,7 +1192,7 @@ def generate_m3u_playlist():
                     # URL-encode il raw_stream_url per l'uso sicuro in un parametro query
                     safe_raw_url = urllib.parse.quote_plus(raw_stream_url)
                     new_final_url = f"{PZPROXY}/porxy?url={safe_raw_url}"
-                                        
+
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{italian_sport_key}",{channel_name_str_for_extinf}\n')
                     file.write(f"{new_final_url}\n\n")
                     processed_event_channels_count += 1
