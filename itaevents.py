@@ -1192,7 +1192,7 @@ def generate_m3u_playlist():
                     # Codifica in Base64 l'URL grezzo
                     encoded_url_bytes = base64.b64encode(raw_stream_url.encode('utf-8'))
                     encoded_url_string = encoded_url_bytes.decode('utf-8')
-                    new_final_url = f"http://pizzapi.uk:7860/watch/{encoded_url_string}.m3u8"
+                    new_final_url = f"{PZPROXY}/watch/{encoded_url_string}.m3u8"
                     
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{italian_sport_key}",{channel_name_str_for_extinf}\n')
                     file.write(f"{new_final_url}\n\n")
