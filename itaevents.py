@@ -32,7 +32,7 @@ SKYSTR = os.getenv("SKYSTR")
 NUM_CHANNELS = 10000
 DADDY_LIVE_CHANNELS_URL = 'https://daddylive.dad/24-7-channels.php' # From 247m3u.py
 DADDY_JSON_FILE = "daddyliveSchedule.json"
-M3U8_OUTPUT_FILE = "itapigz.m3u8"
+M3U8_OUTPUT_FILE = "itaevents.m3u8"
 LOGO = "https://raw.githubusercontent.com/cribbiox/eventi/refs/heads/main/ddsport.png"
 
 # Base URLs for the standard stream checking mechanism (from lista.py)
@@ -905,7 +905,7 @@ def generate_m3u_playlist():
 
                     # URL-encode il raw_stream_url_247 per l'uso sicuro in un parametro query
                     safe_raw_url_247 = urllib.parse.quote_plus(raw_stream_url_247)
-                    new_final_url_247 = f"{PZPROXY}/porxy?url={safe_raw_url_247}"
+                    new_final_url_247 = f"{PZPROXY}/proxy?url={safe_raw_url_247}"
 
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{group_title_val}",{channel_name_str_for_extinf_247}\n')
                     file.write(f"{new_final_url_247}\n\n")
@@ -1192,7 +1192,7 @@ def generate_m3u_playlist():
                     
                     # URL-encode il raw_stream_url per l'uso sicuro in un parametro query
                     safe_raw_url = urllib.parse.quote_plus(raw_stream_url)
-                    new_final_url = f"{PZPROXY}/porxy?url={safe_raw_url}"
+                    new_final_url = f"{PZPROXY}/proxy?url={safe_raw_url}"
 
                     file.write(f'#EXTINF:-1 tvg-id="{tvg_id_val}" tvg-name="{tvg_name}" tvg-logo="{event_logo}" group-title="{italian_sport_key}",{channel_name_str_for_extinf}\n')
                     file.write(f"{new_final_url}\n\n")
