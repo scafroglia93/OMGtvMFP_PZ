@@ -858,6 +858,11 @@ def generate_m3u_playlist():
         "Waterpolo", "Golf", "Darts", "Badminton", "Handball", "Squash"
     ]
 
+    # Initialize counters and task list for events before the loop
+    processed_event_channels_count = 0
+    excluded_event_channels_by_keyword = 0
+    tasks_for_workers = [] 
+
     # First pass to gather category statistics
     category_stats = {} # For events
     for day, day_data in dadjson.items():
@@ -1169,12 +1174,7 @@ def generate_m3u_playlist():
         except KeyError as e:
             print(f"KeyError: {e} - Key may not exist in JSON structure")
 
-    processed_event_channels_count = 0
-    excluded_event_channels_by_keyword = 0
-    tasks_for_workers = [] # Initialize tasks_for_workers for events
-    # Process tasks in parallel and write to M3U8 file
-    # Determina un numero di worker appropriato, es. 10 o 20 per I/O bound tasks
-    # Puoi sperimentare con questo valore.
+
     MAX_WORKERS = 10
     if tasks_for_workers:
         event_channel_ids_processed_and_written = set() # Store IDs of events written to M3U
