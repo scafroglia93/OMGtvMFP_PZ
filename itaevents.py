@@ -754,29 +754,25 @@ def fetch_and_parse_247_channels():
         print(f'Generic error in fetch_and_parse_247_channels: {e_gen}')
     return all_247_channels_info
 
-def prepare_247_channel_tasks(parsed_247_channels_list, event_channel_ids_to_skip):
+def prepare_247_channel_tasks(parsed_247_channels_list):
     """Prepares task arguments for 24/7 channels for the ThreadPoolExecutor."""
     tasks = []
     processed_247_ids_in_this_batch = set() # To avoid duplicates from the 24/7 list itself
     # Add DAZN 1 manually first
     dazn1_id = "877"
-    if dazn1_id not in event_channel_ids_to_skip:
-        dazn1_name = "DAZN 1"
-        dazn1_original_name = "DAZN 1" # For get_stream_link context
-        dazn1_logo = STATIC_LOGOS_247.get(dazn1_name.lower(), DEFAULT_247_LOGO)
-        dazn1_tvg_id = STATIC_TVG_IDS_247.get(dazn1_name.lower(), dazn1_name)
-        dazn1_group = STATIC_CATEGORIES_247.get(dazn1_name.lower(), DEFAULT_247_GROUP)
-        tasks.append((
-            dazn1_id, dazn1_name, dazn1_original_name, dazn1_tvg_id, dazn1_name,
-            dazn1_logo, dazn1_group, f"{dazn1_name} (24/7 D)"
-        ))
-        processed_247_ids_in_this_batch.add(dazn1_id)
-    else:
-        print(f"Skipping DAZN 1 (ID: {dazn1_id}) in 24/7 list as it was already processed as an event.")
-
+    dazn1_name = "DAZN 1"
+    dazn1_original_name = "DAZN 1" # For get_stream_link context
+    dazn1_logo = STATIC_LOGOS_247.get(dazn1_name.lower(), DEFAULT_247_LOGO)
+    dazn1_tvg_id = STATIC_TVG_IDS_247.get(dazn1_name.lower(), dazn1_name)
+    dazn1_group = STATIC_CATEGORIES_247.get(dazn1_name.lower(), DEFAULT_247_GROUP)
+    tasks.append((
+        dazn1_id, dazn1_name, dazn1_original_name, dazn1_tvg_id, dazn1_name,
+        dazn1_logo, dazn1_group, f"{dazn1_name} (D)" # Changed suffix here
+    ))
+    processed_247_ids_in_this_batch.add(dazn1_id)
     for ch_info in parsed_247_channels_list:
         channel_id = ch_info['id']
-        if channel_id not in event_channel_ids_to_skip and channel_id not in processed_247_ids_in_this_batch:
+        if channel_id not in processed_247_ids_in_this_batch: # Removed check against event_channel_ids_to_skip
             channel_name = ch_info['name']
             original_channel_name = ch_info['original_name']
             tvg_logo = STATIC_LOGOS_247.get(channel_name.lower().strip(), DEFAULT_247_LOGO)
@@ -784,13 +780,11 @@ def prepare_247_channel_tasks(parsed_247_channels_list, event_channel_ids_to_ski
             group_title = STATIC_CATEGORIES_247.get(channel_name.lower().strip(), DEFAULT_247_GROUP)
             tasks.append((
                 channel_id, channel_name, original_channel_name, tvg_id, channel_name,
-                tvg_logo, group_title, f"{channel_name} (24/7 D)"
+                tvg_logo, group_title, f"{channel_name} (D)" # Changed suffix here
             ))
             processed_247_ids_in_this_batch.add(channel_id)
         elif channel_id in processed_247_ids_in_this_batch:
             print(f"Skipping 24/7 channel {ch_info['name']} (ID: {channel_id}) as it was already added in this 24/7 batch.")
-        else:
-            print(f"Skipping 24/7 channel {ch_info['name']} (ID: {channel_id}) as it was already processed as an event.")
     return tasks
 
 def generate_m3u_playlist():
@@ -1173,8 +1167,7 @@ def generate_m3u_playlist():
 
     # 4. Process and write 24/7 channels
     print("\nProcessing 24/7 Channels...")
-    # Pass the set of event channel IDs that were already written
-    tasks_247 = prepare_247_channel_tasks(parsed_247_channels_data, event_channel_ids_processed_and_written)
+    tasks_247 = prepare_247_channel_tasks(parsed_247_channels_data) # Removed event_channel_ids_processed_and_written argument
 
     processed_247_channels_count = 0
     if tasks_247:
