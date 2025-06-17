@@ -2,7 +2,7 @@ Report Estrazione Link da thisnot.business
 ===========================================
 
 Pagina Evento: https://thisnot.business/player.php?id=Italia1_IT
-  Dettagli: Categoria='CALCIO', Evento='18:00 Chelsea - Los Angeles FC', Canale='Mediaset'
+  Dettagli: Categoria='CALCIO', Evento='21:00 Chelsea - Los Angeles FC', Canale='Mediaset'
   Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd
 
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
@@ -42,7 +42,7 @@ Pagina Evento: https://thisnot.business/player.php?id=Dazn
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
 
 Pagina Evento: https://thisnot.business/player.php?id=Italia1_IT
-  Dettagli: Categoria='CALCIO', Evento='18:00 Chelsea - Los Angeles FC', Canale='Mediaset'
+  Dettagli: Categoria='CALCIO', Evento='21:00 Chelsea - Los Angeles FC', Canale='Mediaset'
   Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd
 
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
@@ -82,7 +82,7 @@ Pagina Evento: https://thisnot.business/player.php?id=Dazn
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
 
 Pagina Evento: https://thisnot.business/player.php?id=Italia1_IT
-  Dettagli: Categoria='CALCIO', Evento='18:00 Chelsea - Los Angeles FC', Canale='Mediaset'
+  Dettagli: Categoria='CALCIO', Evento='21:00 Chelsea - Los Angeles FC', Canale='Mediaset'
   Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd
 
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
