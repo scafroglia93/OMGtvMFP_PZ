@@ -3,9 +3,6 @@
 #EXTINF:-1 tvg-id="Channel5" tvg-name="SERIE B PLAYOUT - ITALIA VENERDI 20 GIUGNO (RITORNO) 18:00 Manchester City - Wydad Casablanca" tvg-logo="https://thisnot.business/loghi/logoaaa.png" group-title="Sport;ThisNot", Channel5 (TN)
 https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://cachehsi2b.netplus.ch/live/eds/channel5/browser-dash/channel5.mpd
 
-#EXTINF:-1 tvg-id="Telecinco" tvg-name="SERIE B PLAYOUT - ITALIA VENERDI 20 GIUGNO (RITORNO) 21:00 Real Madrid - Al Hilal" tvg-logo="https://thisnot.business/loghi/logoaaa.png" group-title="Sport;ThisNot", Telecinco (TN)
-https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://tvup01.edge.milloh-cs.com/telecincohd/telecincohd.mpd&key_id=def5769eed6152d2b32aa1c75a624764&key=ed06df900e0b84549a834c49997dc8ad,7ca93b77733454d3830c60996ad8929b:8ab9809fc799015a41c39b8b9d6ab9a5,faebbb9b817459d2965625708666a114:9a1aa94adb0b15b523836c6f41843726
-
 #EXTINF:-1 tvg-id="Italia1_IT" tvg-name="SERIE B PLAYOUT - ITALIA VENERDI 20 GIUGNO (RITORNO) 21:00 Inter Miami - Porto" tvg-logo="https://thisnot.business/loghi/logoaaa.png" group-title="Sport;ThisNot", Mediaset (TN)
 https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd
 

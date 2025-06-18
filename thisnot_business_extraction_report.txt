@@ -13,10 +13,6 @@ Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='SporTV'
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
 
-Pagina Evento: https://thisnot.business/player.php?id=Telecinco
-  Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='Telecinco'
-  Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://tvup01.edge.milloh-cs.com/telecincohd/telecincohd.mpd&key_id=def5769eed6152d2b32aa1c75a624764&key=ed06df900e0b84549a834c49997dc8ad,7ca93b77733454d3830c60996ad8929b:8ab9809fc799015a41c39b8b9d6ab9a5,faebbb9b817459d2965625708666a114:9a1aa94adb0b15b523836c6f41843726
-
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='00:00 Pachuca - Salzburg', Canale='SporTV'
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
@@ -65,10 +61,6 @@ Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='SporTV'
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
 
-Pagina Evento: https://thisnot.business/player.php?id=Telecinco
-  Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='Telecinco'
-  Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://tvup01.edge.milloh-cs.com/telecincohd/telecincohd.mpd&key_id=def5769eed6152d2b32aa1c75a624764&key=ed06df900e0b84549a834c49997dc8ad,7ca93b77733454d3830c60996ad8929b:8ab9809fc799015a41c39b8b9d6ab9a5,faebbb9b817459d2965625708666a114:9a1aa94adb0b15b523836c6f41843726
-
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='00:00 Pachuca - Salzburg', Canale='SporTV'
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
@@ -116,10 +108,6 @@ Pagina Evento: https://thisnot.business/player.php?id=Channel5
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='SporTV'
   Stato Estrazione: FALLITO - Nessun proxy generato (Stream non trovato o non processabile)
-
-Pagina Evento: https://thisnot.business/player.php?id=Telecinco
-  Dettagli: Categoria='CALCIO', Evento='21:00 Real Madrid - Al Hilal', Canale='Telecinco'
-  Stato Estrazione: OK - Proxy generato: https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://tvup01.edge.milloh-cs.com/telecincohd/telecincohd.mpd&key_id=def5769eed6152d2b32aa1c75a624764&key=ed06df900e0b84549a834c49997dc8ad,7ca93b77733454d3830c60996ad8929b:8ab9809fc799015a41c39b8b9d6ab9a5,faebbb9b817459d2965625708666a114:9a1aa94adb0b15b523836c6f41843726
 
 Pagina Evento: https://thisnot.business/player.php?id=SporTV1_BR
   Dettagli: Categoria='CALCIO', Evento='00:00 Pachuca - Salzburg', Canale='SporTV'
