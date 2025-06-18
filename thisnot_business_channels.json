@@ -1,4 +1,28 @@
 {
+  "https://thisnot.business/player.php?id=Channel5": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://cachehsi2b.netplus.ch/live/eds/channel5/browser-dash/channel5.mpd",
+    "info": {
+      "category": "CALCIO",
+      "title": "SERIE B PLAYOUT - ITALIA",
+      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "event": "18:00 Manchester City - Wydad Casablanca",
+      "channel": "Channel5",
+      "language": "br",
+      "url": "https://thisnot.business/player.php?id=Channel5"
+    }
+  },
+  "https://thisnot.business/player.php?id=Telecinco": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://tvup01.edge.milloh-cs.com/telecincohd/telecincohd.mpd&key_id=def5769eed6152d2b32aa1c75a624764&key=ed06df900e0b84549a834c49997dc8ad,7ca93b77733454d3830c60996ad8929b:8ab9809fc799015a41c39b8b9d6ab9a5,faebbb9b817459d2965625708666a114:9a1aa94adb0b15b523836c6f41843726",
+    "info": {
+      "category": "CALCIO",
+      "title": "SERIE B PLAYOUT - ITALIA",
+      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "event": "21:00 Real Madrid - Al Hilal",
+      "channel": "Telecinco",
+      "language": "br",
+      "url": "https://thisnot.business/player.php?id=Telecinco"
+    }
+  },
   "https://thisnot.business/player.php?id=Italia1_IT": {
     "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd",
     "info": {
