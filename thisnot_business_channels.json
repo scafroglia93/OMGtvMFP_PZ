@@ -1,14 +1,14 @@
 {
-  "https://thisnot.business/player.php?id=DaznFree2": {
-    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://dca-co-live-gcr.gcdn.co/w3dj4p8g4yqo1byc0k6lcm1ke/web/stream.mpd%3Foutlet%3Ddazn-row",
+  "https://thisnot.business/player.php?id=MBCaction": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://uselector.cdn.intigral-ott.net/MBAH/MBAH.isml/manifest.mpd&key_id=5567531458e9c2e93d22935c45fdef52&key=f2f613fb2132acd019d2a96bf1be15c1",
     "info": {
       "category": "CALCIO",
       "title": "SERIE B PLAYOUT - ITALIA",
       "date": "DOMENICA 22 GIUGNO (RITORNO)",
-      "event": "21:00 Inter Miami - Porto",
-      "channel": "Dazn",
+      "event": "18:00 Benfica - Auckland City",
+      "channel": "MBC",
       "language": "",
-      "url": "https://thisnot.business/player.php?id=DaznFree2"
+      "url": "https://thisnot.business/player.php?id=MBCaction"
     }
   },
   "https://thisnot.business/player.php?id=Italia1_IT": {
@@ -19,20 +19,8 @@
       "date": "DOMENICA 22 GIUGNO (RITORNO)",
       "event": "21:00 Flamengo - Chelsea",
       "channel": "Mediaset",
-      "language": "br",
+      "language": "sa",
       "url": "https://thisnot.business/player.php?id=Italia1_IT"
-    }
-  },
-  "https://thisnot.business/player.php?id=CazeTV_BR": {
-    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://abc3orwaaaaaaaampb5zelh6d3hy6.otte.live.cf.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd&key_id=34475edab991ad5e92548aebd710410a&key=501b209cccd323ac00bf5ac15b406cb4",
-    "info": {
-      "category": "CALCIO",
-      "title": "SERIE B PLAYOUT - ITALIA",
-      "date": "DOMENICA 22 GIUGNO (RITORNO)",
-      "event": "21:00 Inter - Urawa Reds",
-      "channel": "CazeTV",
-      "language": "it",
-      "url": "https://thisnot.business/player.php?id=CazeTV_BR"
     }
   },
   "https://thisnot.business/player.php?id=SAT1": {
@@ -57,6 +45,18 @@
       "channel": "Mediaset",
       "language": "de",
       "url": "https://thisnot.business/player.php?id=Canale5_IT"
+    }
+  },
+  "https://thisnot.business/player.php?id=CazeTV_BR": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://abc3orwaaaaaaaampb5zelh6d3hy6.otte.live.cf.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd&key_id=34475edab991ad5e92548aebd710410a&key=501b209cccd323ac00bf5ac15b406cb4",
+    "info": {
+      "category": "CALCIO",
+      "title": "SERIE B PLAYOUT - ITALIA",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
+      "event": "21:00 Inter - Urawa Reds",
+      "channel": "CazeTV",
+      "language": "it",
+      "url": "https://thisnot.business/player.php?id=CazeTV_BR"
     }
   },
   "https://thisnot.business/player.php?id=ZiggoSP1": {
@@ -93,6 +93,18 @@
       "channel": "Ziggo",
       "language": "nl",
       "url": "https://thisnot.business/player.php?id=ZiggoSP5"
+    }
+  },
+  "https://thisnot.business/player.php?id=ITA_SportTennis": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://g003-lin-it-cmaf-prd-ak.pcdn07.cssott02.com/nowitlin1/Content/CMAF_CTR_H1/Live/channel%28skysporttennis%29/master_2hr-aac.mpd%3F%26ck%3DMTExODYyZDI3YzEwNzM2OThkNmVjNWJiYzMyOGZjNGM6Nzc3ZWM5MGZjM2NkYzZjZWMxYjk2M2VmMTQ3NjBlZjE%3D%26headers%3DeyJ1c2VyLWFnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEzNy4wLjAuMCBTYWZhcmkvNTM3LjM2IiwicmVmZXJlciI6Imh0dHBzOi8vd3d3Lm5vd3R2Lml0LyIsIm9yaWdpbiI6Imh0dHBzOi8vd3d3Lm5vd3R2Lml0In0&key_id=111862d27c1073698d6ec5bbc328fc4c&key=777ec90fc3cdc6cec1b963ef14760ef1",
+    "info": {
+      "category": "TENNIS",
+      "title": "ATP/WTA INTERNAZIONALI",
+      "date": "LUNEDI 16 GIUGNO - DOMENICA 22 GIUGNO",
+      "event": "16:10 Etcheverry v Khachanov",
+      "channel": "Sky Sport",
+      "language": "it",
+      "url": "https://thisnot.business/player.php?id=ITA_SportTennis"
     }
   },
   "https://thisnot.business/player.php?id=ITA_SportMotoGP": {
