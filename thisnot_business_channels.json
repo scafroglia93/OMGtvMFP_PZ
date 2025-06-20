@@ -1,10 +1,22 @@
 {
+  "https://thisnot.business/player.php?id=DaznFree2": {
+    "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://dca-co-live-gcr.gcdn.co/w3dj4p8g4yqo1byc0k6lcm1ke/web/stream.mpd%3Foutlet%3Ddazn-row",
+    "info": {
+      "category": "CALCIO",
+      "title": "SERIE B PLAYOUT - ITALIA",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
+      "event": "21:00 Inter Miami - Porto",
+      "channel": "Dazn",
+      "language": "",
+      "url": "https://thisnot.business/player.php?id=DaznFree2"
+    }
+  },
   "https://thisnot.business/player.php?id=Italia1_IT": {
     "proxy_url": "https://link.proxy.mpd/proxy/mpd/manifest.m3u8?d=https://live03-col.msf.cdn.mediaset.net/live/ch-i1/i1-clr.isml/manifest_hr.mpd",
     "info": {
       "category": "CALCIO",
       "title": "SERIE B PLAYOUT - ITALIA",
-      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
       "event": "21:00 Flamengo - Chelsea",
       "channel": "Mediaset",
       "language": "br",
@@ -16,7 +28,7 @@
     "info": {
       "category": "CALCIO",
       "title": "SERIE B PLAYOUT - ITALIA",
-      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
       "event": "21:00 Inter - Urawa Reds",
       "channel": "CazeTV",
       "language": "it",
@@ -28,7 +40,7 @@
     "info": {
       "category": "CALCIO",
       "title": "SERIE B PLAYOUT - ITALIA",
-      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
       "event": "18:00 Mamelodi Sundowns - Borussia Dortmund",
       "channel": "SAT.1",
       "language": "de",
@@ -40,7 +52,7 @@
     "info": {
       "category": "CALCIO",
       "title": "SERIE B PLAYOUT - ITALIA",
-      "date": "VENERDI 20 GIUGNO (RITORNO)",
+      "date": "DOMENICA 22 GIUGNO (RITORNO)",
       "event": "21:00 Inter - Urawa Reds",
       "channel": "Mediaset",
       "language": "de",
